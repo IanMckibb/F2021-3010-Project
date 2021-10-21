@@ -9,4 +9,4 @@ Simply run the executable and the game will launch, in the main menu press start
 
 Note: At this time the game is simply two boxes which collide, as a majority of work was done in setting up the classes and background for future entities.
 
-Note: At this time there is no in game menu so it cannot be ended, the game must be quit using alt-f4 or similar methods.
+Note: At this time there is no during-play menu so it cannot be ended while in game (the exit from the main menu does work), the game must be quit using alt-f4 or similar methods.
