@@ -4,6 +4,7 @@ In this project we will be creating a 2D Rougelike Game.
 
 ## How To Run:
 
-This project can be run by simply downloading the source and opening in Unity. 
-
-Later we will attach an exe file along with the project that contains the latest version of the game.
+Navigate to the F2021-3010-Project folder and download the file: F2021-3010-Project.exe
+Simply run the executable and the game will launch, in the main menu press start to begin the game.
+Note: At this time the game is simply two boxes which collide, as a majority of work was done in setting up the classes and background for future entities.
+Note: At this time there is no in game menu so it cannot be ended, the game must be quit using alt-f4 or similar methods.
