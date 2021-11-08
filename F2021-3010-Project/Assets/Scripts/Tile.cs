@@ -11,6 +11,7 @@ public class Tile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     void Start() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if (tileName == "") {
             print("TIle name is not set");
         }
@@ -18,7 +19,6 @@ public class Tile : MonoBehaviour
     }
 
     public void createTile() {
-        spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         switch (tileName) {
             case "wall":
                 spriteRenderer.sprite = wallSprites[Random.Range(0, wallSprites.Length)];

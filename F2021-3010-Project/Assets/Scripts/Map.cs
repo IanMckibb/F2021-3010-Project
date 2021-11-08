@@ -13,10 +13,16 @@ public class Map : MonoBehaviour
     void Start()
     {
         map = new Tile[xSize, ySize];
-        for(int i = 0; i < ySize; i++) {
-            for(int q = 0; q < xSize; q++) {
-                map[i, q] = Instantiate(tileObj, new Vector2(q, i), Quaternion.identity);
-                map[i, q].tileName = "floor";
+        for(int i = 0; i < xSize; i++) {
+            for(int q = 0; q < ySize; q++) {
+                map[i, q] = Instantiate(tileObj, new Vector2(i, q), Quaternion.identity);
+                // TESTING
+                if (i == 0 || i == xSize - 1 || q == 0 || q == ySize - 1) { // Make wall when on edge for testing
+                    map[i, q].tileName = "wall";
+                }  else {
+                    map[i, q].tileName = "floor";
+                }
+                // TESTING END
             }
         }
     }
