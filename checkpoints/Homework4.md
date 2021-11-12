@@ -41,12 +41,11 @@ This function overrides the virtual Entity::OnCollisionEnter2D, which defines cu
 
 ```
 public override void OnCollisionEnter2D(Collision2D col)
-    {
-        hp -= 10.0f;
-        print("Enemy lost hp, " + hp.ToString() + " left");
-        if (hp <= 0.0f) {
-            DestroyEntity();
-        }
+{
+    hp -= 10.0f;
+    print("Enemy lost hp, " + hp.ToString() + " left");
+    if (hp <= 0.0f) {
+        DestroyEntity();
     }
 }
 ```
