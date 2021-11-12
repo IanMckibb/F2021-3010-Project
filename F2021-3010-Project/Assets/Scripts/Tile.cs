@@ -22,6 +22,14 @@ public class Tile : MonoBehaviour
         switch (tileName) {
             case "wall":
                 spriteRenderer.sprite = wallSprites[Random.Range(0, wallSprites.Length)];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
+                rb.bodyType = RigidbodyType2D.Static;
+                rb.freezeRotation = true;
                 break;
             case "floor":
                 spriteRenderer.sprite = floorSprites[Random.Range(0, floorSprites.Length)];
