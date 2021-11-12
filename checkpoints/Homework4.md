@@ -22,6 +22,35 @@ Date: 10 / 22 / 2021
 
 Enemies move in basic circles and will be removed from the board once they come into contact with the player enough times.
 
+Relevant Code: This function overrides the virtual Entity::Update to create custom behavior for the Enemy
+
+```
+public override void Update()
+{
+    angleChange += Random.Range(-angleChangeRange, angleChangeRange) * Time.deltaTime;
+    angle += angleChange;
+
+    speedChange = Random.Range(-speedChangeRange, speedChangeRange) * Time.deltaTime;
+    speed += speedChange;
+
+    Move(new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)));
+}
+```
+
+This function overrides the virtual Entity::OnCollisionEnter2D, which defines custom collision behavior
+
+```
+public override void OnCollisionEnter2D(Collision2D col)
+    {
+        hp -= 10.0f;
+        print("Enemy lost hp, " + hp.ToString() + " left");
+        if (hp <= 0.0f) {
+            DestroyEntity();
+        }
+    }
+}
+```
+
 ![Interaction_Gif](./images/h4g1.gif)
 
 Screenshot of basic art.
