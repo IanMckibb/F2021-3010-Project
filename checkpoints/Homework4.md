@@ -24,6 +24,6 @@ Enemies move in basic circles and will be removed from the board once they come 
 
 ![Interaction_Gif](./images/h4g1.gif)
 
-Screenshot of basic functional art.
+Screenshot of basic art.
 
 ![Sprites_SS](./images/h4s1.png)
