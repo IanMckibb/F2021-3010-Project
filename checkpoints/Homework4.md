@@ -9,7 +9,7 @@ Date: 10 / 22 / 2021
 * Basic Functional Art: Some art functioning in the game to start giving it graphics
 
 ## Section 2: Accomplished Features
-* Procedural Map: TODO
+* Procedural Map: Made a functioning procedurally generated map, it generates a car and enemies randomly, deleting old parts of the map as new ones are added.
 * Movindg Enemies: Made a generic momentum and angle based system for a simple red enemy.
 * Basic Functional Art: Created filler sprites for each component we have.
 
@@ -51,6 +51,8 @@ public override void OnCollisionEnter2D(Collision2D col)
 ```
 
 ![Interaction_Gif](./images/h4g1.gif)
+
+![Procedural Video](./images/h4v1.mkv)
 
 Screenshot of basic art.
 
