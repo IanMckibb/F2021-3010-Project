@@ -65,4 +65,5 @@ This is one example of car generation out of the generateCar() function:
 This is the function that generates the entities for the car, enemies and traps, traps are not yet implemented:
 ![EnemySpawn SS](./images/h4s3.png)
 
-![Procedural Video](./images/h4g2.gif)
+Procedural Generation Video:
+https://github.com/IanMckibb/F2021-3010-Project/blob/2e4c05e0766ab04e0c22e0948108ee2532ef0a9f/checkpoints/images/h4v1.mp4
