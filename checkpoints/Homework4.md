@@ -52,8 +52,17 @@ public override void OnCollisionEnter2D(Collision2D col)
 
 ![Interaction_Gif](./images/h4g1.gif)
 
-![Procedural Video](./images/h4v1.mp4)
-
 Screenshot of basic art.
 
 ![Sprites_SS](./images/h4s1.png)
+
+The procedural generation works by running a generateCar() function each time one is needed, deleting the passed cars as new ones are added.
+All the code for this cannot fit here, it is in "Map.cs" under the scripts folder in the project's assets.
+
+This is one example of car generation out of the generateCar() function:
+![Generate SS](./images/h4s2.png)
+
+This is the function that generates the entities for the car, enemies and traps, traps are not yet implemented:
+![EnemySpawn SS](./images/h4s3.png)
+
+![Procedural Video](./images/h4g2.gif)
