@@ -14,6 +14,8 @@ public class Enemy : Entity
     public float speedChange = 0.0f;
     private float speedChangeRange = 1f;
 
+    private int fcount = 0;
+
     // Update is called once per frame
 
     public override void Start()
@@ -33,12 +35,19 @@ public class Enemy : Entity
         speed += speedChange;
 
         Move(new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)));
+
+        //run check distance every 10 frames
+        fcount++;
+        if(fcount == 10){
+            checkDistance();
+            fcount = 0;
+        }
     }
 
     public override void OnCollisionEnter2D(Collision2D col)
     {
         hp -= 10.0f;
-        print("Enemy lost hp, " + hp.ToString() + " left");
+        //print("Enemy lost hp, " + hp.ToString() + " left");
         if (hp <= 0.0f) {
             DestroyEntity();
         }

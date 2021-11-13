@@ -12,6 +12,8 @@ public class Entity : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D bc;
 
+    private int fcount = 0;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -21,7 +23,20 @@ public class Entity : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        
+        //run check distance every 10 frames
+        fcount++;
+        if(fcount == 10){
+            checkDistance();
+            fcount = 0;
+        }
+    }
+
+    //check if entity is too far from player, and destroy if so
+    public void checkDistance(){
+        float distance = GameObject.FindGameObjectWithTag("Player").transform.position.x - transform.position.x;
+        if(distance > 30){
+            DestroyEntity();
+        }
     }
 
     public void addComponents() {
@@ -39,6 +54,8 @@ public class Entity : MonoBehaviour
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(GetComponent<SpriteRenderer>());
             Destroy(this);
+
+            //** need to add case where entity is destroyed if too far from player, as it is hard to handle with map gen
     }
 
     public void Move(Vector2 translation) {
@@ -47,6 +64,6 @@ public class Entity : MonoBehaviour
 
     public virtual void OnCollisionEnter2D(Collision2D col)
     {
-        print("OnCollisionEnter2D");
+        //print("OnCollisionEnter2D");
     }
 }
