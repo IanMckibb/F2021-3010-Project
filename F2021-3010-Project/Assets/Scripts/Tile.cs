@@ -41,5 +41,23 @@ public class Tile : MonoBehaviour
         return;
     }
 
+    public void DestroyTile() {
+        switch (tileName) {
+            case "wall":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "floor":
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            default:
+                Debug.Log("Tile to be destroyed had invalid or no name.");
+                break;
+        }
+    }
+
     void Update() {}
 }
