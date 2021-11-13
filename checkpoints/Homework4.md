@@ -9,7 +9,7 @@ Date: 10 / 22 / 2021
 * Basic Functional Art: Some art functioning in the game to start giving it graphics
 
 ## Section 2: Accomplished Features
-* Procedural Map: TODO
+* Procedural Map: Made a functioning procedurally generated map, it generates a car and enemies randomly, deleting old parts of the map as new ones are added.
 * Movindg Enemies: Made a generic momentum and angle based system for a simple red enemy.
 * Basic Functional Art: Created filler sprites for each component we have.
 
@@ -55,3 +55,15 @@ public override void OnCollisionEnter2D(Collision2D col)
 Screenshot of basic art.
 
 ![Sprites_SS](./images/h4s1.png)
+
+The procedural generation works by running a generateCar() function each time one is needed, deleting the passed cars as new ones are added.
+All the code for this cannot fit here, it is in "Map.cs" under the scripts folder in the project's assets.
+
+This is one example of car generation out of the generateCar() function:
+![Generate SS](./images/h4s2.png)
+
+This is the function that generates the entities for the car, enemies and traps, traps are not yet implemented:
+![EnemySpawn SS](./images/h4s3.png)
+
+Procedural Generation Video:
+https://github.com/IanMckibb/F2021-3010-Project/blob/2e4c05e0766ab04e0c22e0948108ee2532ef0a9f/checkpoints/images/h4v1.mp4
