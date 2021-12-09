@@ -398,7 +398,7 @@ MonoBehaviour:
   xSize: 20
   ySize: 10
   tileObj: {fileID: 357497869094266520, guid: c9fd320d53dcae84d8f5f8e5e40b95d1, type: 3}
-  enemyObj: {fileID: 2465677181521673304, guid: b8b9cfa3e0b71984fb4fed9b83139d5c, type: 3}
+  enemyObj: {fileID: 6030081342791702394, guid: b8b9cfa3e0b71984fb4fed9b83139d5c, type: 3}
   playerObj: {fileID: 1858685991}
 --- !u!4 &1898518668
 Transform:
