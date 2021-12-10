@@ -1,8 +1,9 @@
 Names: William McLaughlin, Ian McKibben
 Date: 10 / 22 / 2021
 
-# Homework 4 - Individual Projects
-
+# Homework 5 - Individual Projects
+Video - https://youtu.be/JGJanSlOlsA
+---
 ## Section 1: Planned Features
 * Abstracting game state: Creating the GameManager which will contain the map, a game state (with a score), as well as a collection of all entities on the board such as players and enemies.
 * Managing classes: Creating subclasses of enemies and game entities with unique properties to add into our procedural generation.
