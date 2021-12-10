@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23ff87035e3bdda418eab34980c28612, type: 3}
   floorSprites:
   - {fileID: 21300000, guid: 8da7ae1f88375dc47930bb3fd0f0d316, type: 3}
+  - {fileID: 21300000, guid: d1e4f27a7f51c3144a3cd1467a9e7c7d, type: 3}
   btwnEndSprites:
   - {fileID: 21300000, guid: 7f42d5d87c8773c498dfa244e2de3a1f, type: 3}
   - {fileID: 21300000, guid: d0fdb07b05020f74a93b30b67be2f83f, type: 3}

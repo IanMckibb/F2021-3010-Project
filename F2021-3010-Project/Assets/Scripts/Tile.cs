@@ -48,7 +48,11 @@ public class Tile : MonoBehaviour
                 break;
 
             case "floor":
-                spriteRenderer.sprite = floorSprites[Random.Range(0, floorSprites.Length)];
+                spriteRenderer.sprite = floorSprites[0];
+                break;
+
+            case "wheel":
+                spriteRenderer.sprite = floorSprites[1];
                 break;
 
             case "btwnend_L":

@@ -43,10 +43,65 @@ public class Map : MonoBehaviour
 
       //generate first two cars
       mapC = generateCar();
+
+      Tile a1 = Instantiate(tileObj, new Vector2(2 + offset, -1), Quaternion.identity);
+      a1.tileName = "wheel";
+      Tile a2 = Instantiate(tileObj, new Vector2(3 + offset, -1), Quaternion.identity);
+      a2.tileName = "wheel";
+      Tile a3 = Instantiate(tileObj, new Vector2(4 + offset, -1), Quaternion.identity);
+      a3.tileName = "wheel";
+      Tile a4 = Instantiate(tileObj, new Vector2(5 + offset, -1), Quaternion.identity);
+      a4.tileName = "wheel";
+
+      Tile b1 = Instantiate(tileObj, new Vector2(22 + offset, -1), Quaternion.identity);
+      b1.tileName = "wheel";
+      Tile b2 = Instantiate(tileObj, new Vector2(23 + offset, -1), Quaternion.identity);
+      b2.tileName = "wheel";
+      Tile b3 = Instantiate(tileObj, new Vector2(24 + offset, -1), Quaternion.identity);
+      b3.tileName = "wheel";
+      Tile b4 = Instantiate(tileObj, new Vector2(25 + offset, -1), Quaternion.identity);
+      b4.tileName = "wheel";
+
       offset = xSize;
       mapA = generateCar();
+      Tile c1 = Instantiate(tileObj, new Vector2(2 + offset, -1), Quaternion.identity);
+      c1.tileName = "wheel";
+      Tile c2 = Instantiate(tileObj, new Vector2(3 + offset, -1), Quaternion.identity);
+      c2.tileName = "wheel";
+      Tile c3 = Instantiate(tileObj, new Vector2(4 + offset, -1), Quaternion.identity);
+      c3.tileName = "wheel";
+      Tile c4 = Instantiate(tileObj, new Vector2(5 + offset, -1), Quaternion.identity);
+      c4.tileName = "wheel";
+
+      Tile d1 = Instantiate(tileObj, new Vector2(22 + offset, -1), Quaternion.identity);
+      d1.tileName = "wheel";
+      Tile d2 = Instantiate(tileObj, new Vector2(23 + offset, -1), Quaternion.identity);
+      d2.tileName = "wheel";
+      Tile d3 = Instantiate(tileObj, new Vector2(24 + offset, -1), Quaternion.identity);
+      d3.tileName = "wheel";
+      Tile d4 = Instantiate(tileObj, new Vector2(25 + offset, -1), Quaternion.identity);
+      d4.tileName = "wheel";
+
       offset = offset + xSize;
       mapB = generateCar();
+
+      Tile e1 = Instantiate(tileObj, new Vector2(2 + offset, -1), Quaternion.identity);
+      e1.tileName = "wheel";
+      Tile e2 = Instantiate(tileObj, new Vector2(3 + offset, -1), Quaternion.identity);
+      e2.tileName = "wheel";
+      Tile e3 = Instantiate(tileObj, new Vector2(4 + offset, -1), Quaternion.identity);
+      e3.tileName = "wheel";
+      Tile e4 = Instantiate(tileObj, new Vector2(5 + offset, -1), Quaternion.identity);
+      e4.tileName = "wheel";
+
+      Tile f1 = Instantiate(tileObj, new Vector2(22 + offset, -1), Quaternion.identity);
+      f1.tileName = "wheel";
+      Tile f2 = Instantiate(tileObj, new Vector2(23 + offset, -1), Quaternion.identity);
+      f2.tileName = "wheel";
+      Tile f3 = Instantiate(tileObj, new Vector2(24 + offset, -1), Quaternion.identity);
+      f3.tileName = "wheel";
+      Tile f4 = Instantiate(tileObj, new Vector2(25 + offset, -1), Quaternion.identity);
+      f4.tileName = "wheel";
     }
 
     // Update is called once per frame
@@ -70,6 +125,25 @@ public class Map : MonoBehaviour
                         }
                      }
                      mapC = generateCar();
+
+                     Tile aa1 = Instantiate(tileObj, new Vector2(2 + offset, -1), Quaternion.identity);
+                     aa1.tileName = "wheel";
+                     Tile aa2 = Instantiate(tileObj, new Vector2(3 + offset, -1), Quaternion.identity);
+                     aa2.tileName = "wheel";
+                     Tile aa3 = Instantiate(tileObj, new Vector2(4 + offset, -1), Quaternion.identity);
+                     aa3.tileName = "wheel";
+                     Tile aa4 = Instantiate(tileObj, new Vector2(5 + offset, -1), Quaternion.identity);
+                     aa4.tileName = "wheel";
+
+                     Tile ba1 = Instantiate(tileObj, new Vector2(22 + offset, -1), Quaternion.identity);
+                     ba1.tileName = "wheel";
+                     Tile ba2 = Instantiate(tileObj, new Vector2(23 + offset, -1), Quaternion.identity);
+                     ba2.tileName = "wheel";
+                     Tile ba3 = Instantiate(tileObj, new Vector2(24 + offset, -1), Quaternion.identity);
+                     ba3.tileName = "wheel";
+                     Tile ba4 = Instantiate(tileObj, new Vector2(25 + offset, -1), Quaternion.identity);
+                     ba4.tileName = "wheel";
+
                      turn = 1;
                      break;
 
@@ -80,6 +154,25 @@ public class Map : MonoBehaviour
                         }
                      }
                      mapA = generateCar();
+
+                     Tile aaa1 = Instantiate(tileObj, new Vector2(2 + offset, -1), Quaternion.identity);
+                     aaa1.tileName = "wheel";
+                     Tile aaa2 = Instantiate(tileObj, new Vector2(3 + offset, -1), Quaternion.identity);
+                     aaa2.tileName = "wheel";
+                     Tile aaa3 = Instantiate(tileObj, new Vector2(4 + offset, -1), Quaternion.identity);
+                     aaa3.tileName = "wheel";
+                     Tile aaa4 = Instantiate(tileObj, new Vector2(5 + offset, -1), Quaternion.identity);
+                     aaa4.tileName = "wheel";
+
+                     Tile baa1 = Instantiate(tileObj, new Vector2(22 + offset, -1), Quaternion.identity);
+                     baa1.tileName = "wheel";
+                     Tile baa2 = Instantiate(tileObj, new Vector2(23 + offset, -1), Quaternion.identity);
+                     baa2.tileName = "wheel";
+                     Tile baa3 = Instantiate(tileObj, new Vector2(24 + offset, -1), Quaternion.identity);
+                     baa3.tileName = "wheel";
+                     Tile baa4 = Instantiate(tileObj, new Vector2(25 + offset, -1), Quaternion.identity);
+                     baa4.tileName = "wheel";
+
                      turn = 2;
                      break;
 
@@ -91,6 +184,25 @@ public class Map : MonoBehaviour
                      }
 
                      mapB = generateCar();
+
+                     Tile aaaa1 = Instantiate(tileObj, new Vector2(2 + offset, -1), Quaternion.identity);
+                     aaaa1.tileName = "wheel";
+                     Tile aaaa2 = Instantiate(tileObj, new Vector2(3 + offset, -1), Quaternion.identity);
+                     aaaa2.tileName = "wheel";
+                     Tile aaaa3 = Instantiate(tileObj, new Vector2(4 + offset, -1), Quaternion.identity);
+                     aaaa3.tileName = "wheel";
+                     Tile aaaa4 = Instantiate(tileObj, new Vector2(5 + offset, -1), Quaternion.identity);
+                     aaaa4.tileName = "wheel";
+
+                     Tile baaa1 = Instantiate(tileObj, new Vector2(22 + offset, -1), Quaternion.identity);
+                     baaa1.tileName = "wheel";
+                     Tile baaa2 = Instantiate(tileObj, new Vector2(23 + offset, -1), Quaternion.identity);
+                     baaa2.tileName = "wheel";
+                     Tile baaa3 = Instantiate(tileObj, new Vector2(24 + offset, -1), Quaternion.identity);
+                     baaa3.tileName = "wheel";
+                     Tile baaa4 = Instantiate(tileObj, new Vector2(25 + offset, -1), Quaternion.identity);
+                     baaa4.tileName = "wheel";
+
                      turn = 0;
                      break;
               }
