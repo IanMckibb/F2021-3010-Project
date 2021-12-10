@@ -355,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df8a5cf912348de4fa91d1a99aac3913, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c46ca3fe51f06345a2ef7fb3c34c7e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -395,8 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9831a1d26a2cb43903da37af3f2a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 20
-  ySize: 10
   tileObj: {fileID: 357497869094266520, guid: c9fd320d53dcae84d8f5f8e5e40b95d1, type: 3}
   enemyObj: {fileID: 6030081342791702394, guid: b8b9cfa3e0b71984fb4fed9b83139d5c, type: 3}
   playerObj: {fileID: 1858685991}

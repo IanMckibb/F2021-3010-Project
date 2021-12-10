@@ -46,9 +46,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: 
   wallSprites:
-  - {fileID: 21300000, guid: 5e167269b1a680e41b6c9a16920b6c0c, type: 3}
+  - {fileID: 21300000, guid: 55fd1afb1c501ac48be72d7abf5a5184, type: 3}
+  - {fileID: 21300000, guid: 8df3bf8b7e398dd459dad8e13ba438f5, type: 3}
+  - {fileID: 21300000, guid: 23ff87035e3bdda418eab34980c28612, type: 3}
   floorSprites:
-  - {fileID: 21300000, guid: a6a767ae399523442bf29e454d1d159b, type: 3}
+  - {fileID: 21300000, guid: 8da7ae1f88375dc47930bb3fd0f0d316, type: 3}
+  btwnEndSprites:
+  - {fileID: 21300000, guid: 7f42d5d87c8773c498dfa244e2de3a1f, type: 3}
+  - {fileID: 21300000, guid: d0fdb07b05020f74a93b30b67be2f83f, type: 3}
+  btwnWallSprites:
+  - {fileID: 21300000, guid: d8085e3a63194ef4eb03ba7a7e179cd6, type: 3}
+  - {fileID: 21300000, guid: 897d46b46ed5310449e1131414bf0d0a, type: 3}
+  btwnFloorSprites:
+  - {fileID: 21300000, guid: 1c1ded96515675c45ab1fafd9abf546d, type: 3}
+  - {fileID: 21300000, guid: 5259b6630dace47499d13bcc81fa1d6c, type: 3}
   defaultSprite: {fileID: 21300000, guid: df8a5cf912348de4fa91d1a99aac3913, type: 3}
 --- !u!212 &1799313440029781969
 SpriteRenderer:

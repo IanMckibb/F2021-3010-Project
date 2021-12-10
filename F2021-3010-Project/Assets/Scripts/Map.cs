@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public int xSize = 20;
-    public int ySize = 10;
+    private int xSize = 28;
+    private int ySize = 11;
     public Tile tileObj;
     public Enemy enemyObj;
     public Player playerObj;
 
     //procedural generation variables
     private int ecount = 0;
-    private int tcount = 0;
+    //private int tcount = 0;
     private int offset = 0;
 
     //update variables
@@ -27,19 +27,22 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //generate tiles to block back of first car, eventually this could be a locomotive or caboose
-      Tile a = Instantiate(tileObj, new Vector2(-1, 3), Quaternion.identity);
-      a.tileName = "wall";
-      Tile b = Instantiate(tileObj, new Vector2(-1, 4), Quaternion.identity);
-      b.tileName = "wall";
-      Tile c = Instantiate(tileObj, new Vector2(-1, 5), Quaternion.identity);
-      c.tileName = "wall";
+      //generate tiles to block back of first car, this could be a locomotive or caboose for someone with art skills
+      for(int i = 1; i < ySize - 1; i++){
+         if(i >= 3 && i <= ySize - 4){
+            Tile a = Instantiate(tileObj, new Vector2(-1, i), Quaternion.identity);
+            a.tileName = "box";
+         }else{
+            Tile a = Instantiate(tileObj, new Vector2(-1, i), Quaternion.identity);
+            a.tileName = "btwnwall_L";
+         }
+      }
 
       //generate first two cars
       mapC = generateCar();
-      offset = xSize + 1;
+      offset = xSize;
       mapA = generateCar();
-      offset = offset + 21;
+      offset = offset + xSize;
       mapB = generateCar();
     }
 
@@ -49,7 +52,7 @@ public class Map : MonoBehaviour
         //if the player is in the last 5 tiles of the car, generate a new car after the next, and delete the previous
         if(playerObj.transform.position.x >= offset - 5 && playerObj.transform.position.x <= offset + 5){
            if(!doneGen){
-              offset = offset + xSize + 1;
+              offset = offset + xSize;
               switch(turn){
                   case 0:
                      for(int i = 0; i < xSize; i++){
@@ -57,35 +60,26 @@ public class Map : MonoBehaviour
                            mapC[i,j].DestroyTile();
                         }
                      }
-                     mapC[20, 3].DestroyTile();
-                     mapC[20, 4].DestroyTile();
-                     mapC[20, 5].DestroyTile();
-
                      mapC = generateCar();
                      turn = 1;
                      break;
+
                   case 1:
                      for(int i = 0; i < xSize; i++){
                         for(int j = 0; j < ySize; j++){
                            mapA[i,j].DestroyTile();
                         }
                      }
-                     mapA[20, 3].DestroyTile();
-                     mapA[20, 4].DestroyTile();
-                     mapA[20, 5].DestroyTile();
-
                      mapA = generateCar();
                      turn = 2;
                      break;
+
                   case 2:
                      for(int i = 0; i < xSize; i++){
                         for(int j = 0; j < ySize; j++){
                            mapB[i,j].DestroyTile();
                         }
                      }
-                     mapB[20, 3].DestroyTile();
-                     mapB[20, 4].DestroyTile();
-                     mapB[20, 5].DestroyTile();
 
                      mapB = generateCar();
                      turn = 0;
@@ -104,19 +98,17 @@ public class Map : MonoBehaviour
     // Generates an array of tiles for the next car of the train
     Tile[,] generateCar(){
       
-      Tile[,] car = new Tile[xSize + 1, ySize];
+      Tile[,] car = new Tile[xSize, ySize];
 
-      //generate a random 'seed' to create the car with (5 numbers 0 to 9 [set as 0-2 for now for map gen testing])
+      //generate a random 'seed' to create the car with
          //seed[0] -> used in car shape
          //seed[1] -> used in enemy count
-         //seed[2] -> 
-         //seed[3] -> used in trap count
-         //seed[4] ->
-      int[] seed = new int[5];
-      for(int i = 0; i < 5; i++){
+         //seed[2] -> used in box spawning
+      int[] seed = new int[3];
+      for(int i = 0; i < 3; i++){
          seed[i] = Random.Range(0,3);
       }
-      seed[1] = seed[1] + 2; //just adjusting enemy seed so it spawns more, for testing
+      seed[1] = seed[1] + 2; //just adjusting enemy seed so it spawns more
 
       //based on various pieces of seed generate:
          //- shape for car walls, eg if seperated into 2 rooms
@@ -126,16 +118,28 @@ public class Map : MonoBehaviour
       //*** GENERATE CAR ***
       Debug.Log("Generating car shape based on: " + seed[0]);
       Debug.Log("Generating enemies based on: " + seed[1]);
+
       switch(seed[0]){
-         case 0: //basic rectangle
+         case 0: //empty car
             for(int i = 0; i < xSize; i++){
                for(int j = 0; j < ySize; j++){
                   //create tile objects for car Tile array
                   car[i, j] = Instantiate(tileObj, new Vector2(i + offset, j), Quaternion.identity);
 
                   //fill outer edges with walls
-                  if ((i == 0 || i == xSize - 1 || j == 0 || j == ySize - 1) && j != (ySize - 1) / 2) {
+                  if ((j == 0 || j == ySize - 1) && (i != 0 || i != ySize - 1)) {
                      car[i, j].tileName = "wall";
+                  
+                  //btwn walls and floors
+                  }else if((i == 0 && (j < (ySize/2)-2 || j > (ySize/2)+2))){
+                     car[i,j].tileName = "btwnwall_R";
+                  }else if(i == xSize-1 && (j < (ySize/2)-2 || j > (ySize/2)+2)){
+                     car[i,j].tileName = "btwnwall_L";
+                  }else if(i == 0){
+                     car[i,j].tileName = "btwnfloor_R";
+                  }else if(i == xSize - 1){
+                     car[i,j].tileName = "btwnfloor_L";
+                  
                   //fill remaining tiles with floor
                   }else{
                      car[i, j].tileName = "floor";
@@ -144,29 +148,33 @@ public class Map : MonoBehaviour
                   }
                }
             }
-
-            //make hallway between trains
-            car[20, 3] = Instantiate(tileObj, new Vector2(20 + offset, 3), Quaternion.identity);
-            car[20, 3].tileName = "wall";
-            car[20, 4] = Instantiate(tileObj, new Vector2(20 + offset, 4), Quaternion.identity);
-            car[20, 4].tileName = "floor";
-            car[20, 5] = Instantiate(tileObj, new Vector2(20 + offset, 5), Quaternion.identity);
-            car[20, 5].tileName = "wall";
-
+            //btwn car ends
+            car[0,0].tileName = "btwnend_R";
+            car[0,ySize - 1].tileName = "btwnend_R";
+            car[xSize - 1,0].tileName = "btwnend_L";
+            car[xSize - 1,ySize - 1].tileName = "btwnend_L";
             break;
          
-         case 1: //seperated into two rooms at half point
+         case 1: //one box wall
             for(int i = 0; i < xSize; i++){
                for(int j = 0; j < ySize; j++){
                   //create tile objects for car Tile array
                   car[i, j] = Instantiate(tileObj, new Vector2(i + offset, j), Quaternion.identity);
-                  
+
                   //fill outer edges with walls
-                  if ((i == 0 || i == xSize - 1 || j == 0 || j == ySize - 1) && j != (ySize - 1) / 2) {
+                  if ((j == 0 || j == ySize - 1) && (i != 0 || i != ySize - 1)) {
                      car[i, j].tileName = "wall";
-                  //fill middle walls, leave gap in middle
-                  }else if(i == (xSize - 1) / 2 && j != (ySize - 1) / 2 ){
-                     car[i,j].tileName = "wall";
+                  
+                  //btwn walls and floors
+                  }else if((i == 0 && (j < (ySize/2)-2 || j > (ySize/2)+2))){
+                     car[i,j].tileName = "btwnwall_R";
+                  }else if(i == xSize-1 && (j < (ySize/2)-2 || j > (ySize/2)+2)){
+                     car[i,j].tileName = "btwnwall_L";
+                  }else if(i == 0){
+                     car[i,j].tileName = "btwnfloor_R";
+                  }else if(i == xSize - 1){
+                     car[i,j].tileName = "btwnfloor_L";
+                  
                   //fill remaining tiles with floor
                   }else{
                      car[i, j].tileName = "floor";
@@ -175,29 +183,40 @@ public class Map : MonoBehaviour
                   }
                }
             }
+            //btwn car ends
+            car[0,0].tileName = "btwnend_R";
+            car[0,ySize - 1].tileName = "btwnend_R";
+            car[xSize - 1,0].tileName = "btwnend_L";
+            car[xSize - 1,ySize - 1].tileName = "btwnend_L";
 
-            //make hallway between trains
-            car[20, 3] = Instantiate(tileObj, new Vector2(20 + offset, 3), Quaternion.identity);
-            car[20, 3].tileName = "wall";
-            car[20, 4] = Instantiate(tileObj, new Vector2(20 + offset, 4), Quaternion.identity);
-            car[20, 4].tileName = "floor";
-            car[20, 5] = Instantiate(tileObj, new Vector2(20 + offset, 5), Quaternion.identity);
-            car[20, 5].tileName = "wall";
-
+            //box wall
+            for(int i = 1; i < ySize - 1; i++){
+               //aboid middle
+               if(i < (ySize/2)-1 || i > (ySize/2)+1){
+                  car[((xSize/2)-5 + (seed[2]*3)), i].tileName = "box";
+               }
+            }
             break;
-
-         case 2: //smaller room at beginning
+         case 2: //random boxes
             for(int i = 0; i < xSize; i++){
                for(int j = 0; j < ySize; j++){
                   //create tile objects for car Tile array
                   car[i, j] = Instantiate(tileObj, new Vector2(i + offset, j), Quaternion.identity);
-                  
+
                   //fill outer edges with walls
-                  if ((i == 0 || i == xSize - 1 || j == 0 || j == ySize - 1) && j != (ySize - 1) / 2) {
+                  if ((j == 0 || j == ySize - 1) && (i != 0 || i != ySize - 1)) {
                      car[i, j].tileName = "wall";
-                  //fill front/middle walls, leave gap in middle
-                  }else if(i == (xSize - 1) / 4 && j != (ySize - 1) / 2 ){
-                     car[i,j].tileName = "wall";
+                  
+                  //btwn walls and floors
+                  }else if((i == 0 && (j < (ySize/2)-2 || j > (ySize/2)+2))){
+                     car[i,j].tileName = "btwnwall_R";
+                  }else if(i == xSize-1 && (j < (ySize/2)-2 || j > (ySize/2)+2)){
+                     car[i,j].tileName = "btwnwall_L";
+                  }else if(i == 0){
+                     car[i,j].tileName = "btwnfloor_R";
+                  }else if(i == xSize - 1){
+                     car[i,j].tileName = "btwnfloor_L";
+                  
                   //fill remaining tiles with floor
                   }else{
                      car[i, j].tileName = "floor";
@@ -206,21 +225,25 @@ public class Map : MonoBehaviour
                   }
                }
             }
+            //btwn car ends
+            car[0,0].tileName = "btwnend_R";
+            car[0,ySize - 1].tileName = "btwnend_R";
+            car[xSize - 1,0].tileName = "btwnend_L";
+            car[xSize - 1,ySize - 1].tileName = "btwnend_L";
 
-            //make hallway between trains
-            car[20, 3] = Instantiate(tileObj, new Vector2(20 + offset, 3), Quaternion.identity);
-            car[20, 3].tileName = "wall";
-            car[20, 4] = Instantiate(tileObj, new Vector2(20 + offset, 4), Quaternion.identity);
-            car[20, 4].tileName = "floor";
-            car[20, 5] = Instantiate(tileObj, new Vector2(20 + offset, 5), Quaternion.identity);
-            car[20, 5].tileName = "wall";
-
+            //randomly place boxes
+            int r = Random.Range(5,12);
+            for(int z = 0; z < r; z++){
+               int x = Random.Range(3, xSize - 2);
+               int y = Random.Range(2, ySize - 1);
+               car[x,y].tileName = "box";
+            }
             break;
       }
 
       //reset enemy and trap counters
       ecount = 0;
-      tcount = 0;
+      //tcount = 0;
 
       return car;
     }
@@ -235,15 +258,11 @@ public class Map : MonoBehaviour
          ecount++;
       }
       //*** SPAWN TRAPS ****
-      sr = Random.Range(0, 1001);
-      if(tcount < seed[3] + 1 && i > 2 && sr > (1000 - ((i+(seed[3] ^ 2)) ^ 3))){//if not too many traps, at least 3 from start, third bit increases spawn chance (expon.) further from entrance
-         Debug.Log("trap gen : seed=" + seed[3] + " : sr=" + sr + " : i/x=" + i + " ** Not yet implemented.");
-         //Instantiate(trapObj, new Vector2(i + offset, j), Quaternion.identity);
-         tcount++;
-      }
+      // sr = Random.Range(0, 1001);
+      // if(tcount < seed[3] + 1 && i > 2 && sr > (1000 - ((i+(seed[3] ^ 2)) ^ 3))){//if not too many traps, at least 3 from start, third bit increases spawn chance (expon.) further from entrance
+      //    Debug.Log("trap gen : seed=" + seed[3] + " : sr=" + sr + " : i/x=" + i + " ** Not yet implemented.");
+      //    //Instantiate(trapObj, new Vector2(i + offset, j), Quaternion.identity);
+      //    tcount++;
+      // }
     }
-
-    //Proc. Gen Notes:
-      // - maybe make train cars pretty long, for less repeated calls to generation
-      // -  - could 'load' between cars as levels if long enough, so no 'stitching' together of cars is needed
 }
