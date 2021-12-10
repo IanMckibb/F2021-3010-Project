@@ -211,13 +211,37 @@ public class Tile : MonoBehaviour
                 Destroy(GetComponent<SpriteRenderer>());
                 Destroy(this);
                 break;
-            case "btwnwall_L":
+            case "btwnwall_L_T":
                 Destroy(GetComponent<Rigidbody2D>());
                 Destroy(GetComponent<BoxCollider2D>());
                 Destroy(GetComponent<SpriteRenderer>());
                 Destroy(this);
                 break;
-            case "btwnwall_R":
+            case "btwnwall_L_B":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_R_T":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_R_B":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_W_R_T":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_W_R_B":
                 Destroy(GetComponent<Rigidbody2D>());
                 Destroy(GetComponent<BoxCollider2D>());
                 Destroy(GetComponent<SpriteRenderer>());
