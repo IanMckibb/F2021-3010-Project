@@ -117,7 +117,7 @@ public class Map : MonoBehaviour
       for(int i = 0; i < 3; i++){
          seed[i] = Random.Range(0,3);
       }
-      seed[1] = seed[1] + 4; //just adjusting enemy seed so it spawns more
+      seed[1] = seed[1] + 4 + (offset / 14); //just adjusting enemy seed so it spawns more
 
       //based on various pieces of seed generate:
          //- shape for car walls, eg if seperated into 2 rooms
@@ -223,7 +223,10 @@ public class Map : MonoBehaviour
             //box walls
             for(int i = 1; i < ySize - 1; i++){
                if(i < (ySize/2)-1 || i > (ySize/2)+1){
-                  car[((xSize/2)-5 + (seed[2]*3)), i].tileName = "box";
+                  car[((xSize/2)-5 + (seed[2]*2)), i].tileName = "box";
+               }
+               if(i < (ySize/2)-1 || i > (ySize/2)+1){
+                  car[((xSize/2)+5 + (seed[2]*2)), i].tileName = "box";
                }
             }
             break;
@@ -272,7 +275,7 @@ public class Map : MonoBehaviour
             car[xSize - 1,ySize - 3].tileName = "btwnwall_W_L_T";
 
             //randomly place boxes
-            int r = Random.Range(5,12);
+            int r = Random.Range(5,20);
             for(int z = 0; z < r; z++){
                int x = Random.Range(3, xSize - 2);
                int y = Random.Range(2, ySize - 1);
@@ -292,7 +295,7 @@ public class Map : MonoBehaviour
     void spawnEntities(int i, int j, int[] seed){
        //*** SPAWN ENEMIES ***
       int sr = Random.Range(0, 1001);
-      if(ecount < seed[1] + 1 && i > 2 && sr > (1000 - ((i+(seed[1] ^ 2)) ^ 3))){//if not too many enemies, at least 3 from start, third bit increases spawn chance (expon.) further from entrance
+      if(ecount < seed[1] * 2 && i > 2 && sr > (1000 - ((i+(seed[1] ^ 2)) ^ 3))){//if not too many enemies, at least 3 from start, third bit increases spawn chance (expon.) further from entrance
          Debug.Log("enemy gen : seed=" + seed[1] + " : sr=" + sr + " : i/x=" + i);
          Instantiate(enemyObj, new Vector2(i + offset, j), Quaternion.identity);
          ecount++;

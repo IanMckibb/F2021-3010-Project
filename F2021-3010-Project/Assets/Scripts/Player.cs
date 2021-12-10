@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Entity
 {
     public float maxHp = 100.0f;
     public float hp = 100.0f;
     public GameState gs;
+
+    public GameObject resetText;
+    public GameObject menuText;
+    public GameObject resetPanel;
     
 
     // Update is called once per frame
@@ -29,6 +34,11 @@ public class Player : Entity
         if (this.hp <= -100.0f) {
             // Set game over
             print("Destroyed " + this.hp.ToString());
+
+            resetText.gameObject.SetActive(true);
+            menuText.gameObject.SetActive(true);
+            resetPanel.gameObject.SetActive(true);
+            resetText.GetComponent<TMPro.TextMeshProUGUI>().text = "Your Score: " + gs.points.ToString();
             DestroyEntity();
         }
     }

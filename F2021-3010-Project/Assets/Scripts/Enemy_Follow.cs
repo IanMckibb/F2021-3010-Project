@@ -75,11 +75,15 @@ public class Enemy_Follow : Enemy
     public void checkFollow(){
         float distance = Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position);
         if (distance < 4.0f){
-            this.speed = 2.5f;
+            this.speed = 3.2f;
+            this.state = "FOLLOWING";
+        } 
+        else if (distance < 4.5f){
+            this.speed = 4.2f;
             this.state = "FOLLOWING";
         } 
         else if (this.state == "FOLLOWING" && distance > 5.5f) {
-            this.speed = 1.5f;
+            this.speed = 2.2f;
             this.state = "IDLE";
         }
     }
