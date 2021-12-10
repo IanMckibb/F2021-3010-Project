@@ -18,7 +18,6 @@ public class Player : Entity
 
     public override void OnCollisionEnter2D(Collision2D col)
     {
-        gs.points -= 10000;
-        print("Player hit");
+        //
     }
 }
