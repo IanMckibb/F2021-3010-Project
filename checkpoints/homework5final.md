@@ -25,4 +25,4 @@ Since there is no next homework, we will use this space to discuss unimplemented
 ## Section 4: Screenshots
 
 (Screenshots not included, as the full game running is in the video submission.)
-(If code snipets are desired, there was simply too much code done for this checpoint to place here, they exist in the project folder under Assets/Scripts.)
+(If code snipets are desired, there was simply too much code done for this checkpoint to place here, they exist in the project folder under Assets/Scripts.)
