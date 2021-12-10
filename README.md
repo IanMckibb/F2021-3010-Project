@@ -4,4 +4,4 @@ In this project we will be creating a 2D Rougelike Game, in which the player att
 
 ## How To Run:
 
-Download the Game_exec folder, then run the executable inside of it. Simply press start on the menu to begin the game.
+Download the Game_exec zip folder, then run the executable inside of it. Simply press start on the menu to begin the game.
