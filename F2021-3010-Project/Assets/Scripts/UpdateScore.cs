@@ -19,6 +19,6 @@ public class UpdateScore : MonoBehaviour
     void Update()
     {
         myText.text = "Score: " + gs.points.ToString();
-        myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 232, 80);
+        myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 226, 80);
     }
 }

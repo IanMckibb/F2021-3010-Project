@@ -18,6 +18,11 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         // Check if player destroyed
+         if (GameObject.Find("Player") == null)
+         {
+            return;
+         }
         // Update points to player x position
         if (player.transform.position.x > maxPos) {
             maxPos = player.transform.position.x;

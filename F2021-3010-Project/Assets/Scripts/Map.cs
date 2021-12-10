@@ -49,6 +49,12 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         // Check if player destroyed
+         if (GameObject.Find("Player") == null)
+         {
+            return;
+         }
+
         //if the player is in the last 5 tiles of the car, generate a new car after the next, and delete the previous
         if(playerObj.transform.position.x >= offset - 5 && playerObj.transform.position.x <= offset + 5){
            if(!doneGen){

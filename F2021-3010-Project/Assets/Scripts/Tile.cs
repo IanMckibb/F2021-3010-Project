@@ -170,5 +170,10 @@ public class Tile : MonoBehaviour
         }
     }
 
-    void Update() {}
+    void Update() {
+        if (tileName == "wall" || tileName == "box") {
+            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+            GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        }
+    }
 }

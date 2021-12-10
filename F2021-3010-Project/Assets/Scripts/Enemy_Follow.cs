@@ -12,7 +12,7 @@ public class Enemy_Follow : Enemy
     override public void Start()
     {
         this.speed = 1.0f;
-        this.currTime = this.baseTime;
+        this.currTime = Random.Range(0.0f, this.baseTime);
         this.state = "IDLE";
         this.addComponents();
     }
@@ -20,17 +20,23 @@ public class Enemy_Follow : Enemy
     // Update is called once per frame
     override public void Update()
     {
-        currTime -= Time.deltaTime;
+         // Check if player destroyed
+         if (GameObject.Find("Player") == null)
+         {
+            return;
+         }
+        GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+        this.currTime -= Time.deltaTime;
         checkFollow();
-        if (currTime <= 0) {
-            currTime = baseTime;
+        if (this.currTime <= 0) {
+            this.currTime = Random.Range(baseTime - 0.5f, baseTime + 0.5f);
             if (this.state == "FOLLOWING") {
                 // Do nothing in this part
             }
             else if (this.state == "IDLE") {
                 this.state = "MOVING";
                 // Determine movement direction
-                movementDir = Random.Range(0.0f, 2.0f * Mathf.PI);
+                this.movementDir = Random.Range(0.0f, 2.0f * Mathf.PI);
             } 
             else if (this.state == "MOVING") {
                 this.state = "IDLE";
@@ -44,8 +50,7 @@ public class Enemy_Follow : Enemy
             this.Move(new Vector2(Mathf.Cos(this.movementDir), Mathf.Sin(this.movementDir)));
         } 
         else if (this.state == "FOLLOWING") {
-            movementDir = Mathf.Atan((GameObject.FindGameObjectWithTag("Player").transform.position.y - transform.position.y) / (GameObject.FindGameObjectWithTag("Player").transform.position.x - transform.position.x));
-            print(movementDir);
+            this.movementDir = Mathf.Atan((GameObject.FindGameObjectWithTag("Player").transform.position.y - transform.position.y) / (GameObject.FindGameObjectWithTag("Player").transform.position.x - transform.position.x));
             float xComp = Mathf.Cos(this.movementDir);
             float yComp = Mathf.Sin(this.movementDir);
             if (GameObject.FindGameObjectWithTag("Player").transform.position.x < transform.position.x) {
@@ -58,11 +63,11 @@ public class Enemy_Follow : Enemy
 
     public void checkFollow(){
         float distance = Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position);
-        if (distance < 3.0f){
+        if (distance < 4.0f){
             this.speed = 2.5f;
             this.state = "FOLLOWING";
         } 
-        else if (this.state == "FOLLOWING" && distance > 4.5f) {
+        else if (this.state == "FOLLOWING" && distance > 5.5f) {
             this.speed = 1.5f;
             this.state = "IDLE";
         }

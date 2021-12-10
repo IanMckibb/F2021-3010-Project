@@ -16,9 +16,10 @@ public class Enemy : Entity
     {
         this.addComponents();
     }
-    
+
     public override void Update()
     {
+        GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
         //run check distance every 10 frames
         frameCount++;
         if(frameCount == 10){
@@ -29,12 +30,6 @@ public class Enemy : Entity
 
     public override void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "Player") {
-            hp -= 10.0f;
-        }
-        print("Enemy lost hp, " + hp.ToString() + " left");
-        if (hp <= 0.0f) {
-            DestroyEntity();
-        }
+        //
     }
 }

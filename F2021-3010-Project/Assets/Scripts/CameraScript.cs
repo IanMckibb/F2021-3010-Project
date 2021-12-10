@@ -16,6 +16,11 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if player destroyed
+        if (GameObject.Find("Player") == null)
+        {
+            return;
+        }
         Vector3 diff = (Vector2)(player.transform.position - transform.position);
         transform.position += diff * speed * Time.deltaTime;
     }

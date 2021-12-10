@@ -25,7 +25,7 @@ public class Entity : MonoBehaviour
     {
         //run check distance every 10 frames
         fcount++;
-        if(fcount == 10){
+        if(fcount == 10) {
             checkDistance();
             fcount = 0;
         }
@@ -34,7 +34,7 @@ public class Entity : MonoBehaviour
     //check if entity is too far from player, and destroy if so
     public void checkDistance(){
         float distance = GameObject.FindGameObjectWithTag("Player").transform.position.x - transform.position.x;
-        if(distance > 30){
+        if(distance > 30) {
             DestroyEntity();
         }
     }
@@ -42,6 +42,7 @@ public class Entity : MonoBehaviour
     public void addComponents() {
         // Set boxcollider
         this.bc = gameObject.AddComponent<BoxCollider2D>();
+        bc.size = new Vector3(0.5f, 0.5f, 0.5f);
 
         // Set rb
         this.rb = gameObject.AddComponent<Rigidbody2D>();
@@ -53,6 +54,7 @@ public class Entity : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(GetComponent<SpriteRenderer>());
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
             Destroy(this);
 
             //** need to add case where entity is destroyed if too far from player, as it is hard to handle with map gen
