@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UpdateScore : MonoBehaviour
 {
-    public Text myText;
+    //public Text myText;
     public RectTransform myPanel;
     public GameState gs;
     // Start is called before the first frame update
@@ -20,5 +20,10 @@ public class UpdateScore : MonoBehaviour
     {
         myText.text = "Score: " + gs.points.ToString();
         myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 226, 80);
+        // GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + gs.points.ToString();
+        // myPanel.sizeDelta = new Vector2(GetComponent<TMPro.TextMeshProUGUI>().text.Length * 54 - 232, 80);
+
+        //myText.text = "Score: " + gs.points.ToString();
+        //myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 232, 80);
     }
 }

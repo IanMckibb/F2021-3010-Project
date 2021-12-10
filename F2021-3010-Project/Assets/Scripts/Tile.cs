@@ -75,7 +75,7 @@ public class Tile : MonoBehaviour
                 rb4.freezeRotation = true;
                 break;
 
-            case "btwnwall_L":
+            case "btwnwall_L_T":
                 spriteRenderer.sprite = btwnWallSprites[0];
                 
                 // Set boxcollider
@@ -86,17 +86,84 @@ public class Tile : MonoBehaviour
                 rb3.bodyType = RigidbodyType2D.Static;
                 rb3.freezeRotation = true;
                 break;
-
-            case "btwnwall_R":
+            case "btwnwall_R_T":
                 spriteRenderer.sprite = btwnWallSprites[1];
                 
                 // Set boxcollider
                 gameObject.AddComponent<BoxCollider2D>();
 
                 // Set rb
-                Rigidbody2D rb5 = gameObject.AddComponent<Rigidbody2D>();
-                rb5.bodyType = RigidbodyType2D.Static;
-                rb5.freezeRotation = true;
+                Rigidbody2D rb6 = gameObject.AddComponent<Rigidbody2D>();
+                rb6.bodyType = RigidbodyType2D.Static;
+                rb6.freezeRotation = true;
+                break;
+
+            case "btwnwall_L_B":
+                spriteRenderer.sprite = btwnWallSprites[2];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb8 = gameObject.AddComponent<Rigidbody2D>();
+                rb8.bodyType = RigidbodyType2D.Static;
+                rb8.freezeRotation = true;
+                break;
+            case "btwnwall_R_B":
+                spriteRenderer.sprite = btwnWallSprites[3];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb9 = gameObject.AddComponent<Rigidbody2D>();
+                rb9.bodyType = RigidbodyType2D.Static;
+                rb9.freezeRotation = true;
+                break;
+            
+            case "btwnwall_W_L_T":
+                spriteRenderer.sprite = btwnWallSprites[4];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb0 = gameObject.AddComponent<Rigidbody2D>();
+                rb0.bodyType = RigidbodyType2D.Static;
+                rb0.freezeRotation = true;
+                break;
+            case "btwnwall_W_L_B":
+                spriteRenderer.sprite = btwnWallSprites[6];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb0a = gameObject.AddComponent<Rigidbody2D>();
+                rb0a.bodyType = RigidbodyType2D.Static;
+                rb0a.freezeRotation = true;
+                break;
+            case "btwnwall_W_R_T":
+                spriteRenderer.sprite = btwnWallSprites[5];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb1 = gameObject.AddComponent<Rigidbody2D>();
+                rb1.bodyType = RigidbodyType2D.Static;
+                rb1.freezeRotation = true;
+                break;
+            case "btwnwall_W_R_B":
+                spriteRenderer.sprite = btwnWallSprites[7];
+                
+                // Set boxcollider
+                gameObject.AddComponent<BoxCollider2D>();
+
+                // Set rb
+                Rigidbody2D rb1a = gameObject.AddComponent<Rigidbody2D>();
+                rb1a.bodyType = RigidbodyType2D.Static;
+                rb1a.freezeRotation = true;
                 break;
 
             case "btwnfloor_L":
@@ -144,13 +211,37 @@ public class Tile : MonoBehaviour
                 Destroy(GetComponent<SpriteRenderer>());
                 Destroy(this);
                 break;
-            case "btwnwall_L":
+            case "btwnwall_L_T":
                 Destroy(GetComponent<Rigidbody2D>());
                 Destroy(GetComponent<BoxCollider2D>());
                 Destroy(GetComponent<SpriteRenderer>());
                 Destroy(this);
                 break;
-            case "btwnwall_R":
+            case "btwnwall_L_B":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_R_T":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_R_B":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_W_R_T":
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<BoxCollider2D>());
+                Destroy(GetComponent<SpriteRenderer>());
+                Destroy(this);
+                break;
+            case "btwnwall_W_R_B":
                 Destroy(GetComponent<Rigidbody2D>());
                 Destroy(GetComponent<BoxCollider2D>());
                 Destroy(GetComponent<SpriteRenderer>());

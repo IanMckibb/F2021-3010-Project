@@ -28,13 +28,16 @@ public class Map : MonoBehaviour
     void Start()
     {
       //generate tiles to block back of first car, this could be a locomotive or caboose for someone with art skills
-      for(int i = 1; i < ySize - 1; i++){
+      for(int i = 2; i < ySize - 2; i++){
          if(i >= 3 && i <= ySize - 4){
             Tile a = Instantiate(tileObj, new Vector2(-1, i), Quaternion.identity);
             a.tileName = "box";
+         }else if(i >= ySize/2){
+            Tile a = Instantiate(tileObj, new Vector2(-1, i), Quaternion.identity);
+            a.tileName = "btwnwall_W_L_T";
          }else{
             Tile a = Instantiate(tileObj, new Vector2(-1, i), Quaternion.identity);
-            a.tileName = "btwnwall_L";
+            a.tileName = "btwnwall_W_L_B";
          }
       }
 
@@ -125,6 +128,8 @@ public class Map : MonoBehaviour
       Debug.Log("Generating car shape based on: " + seed[0]);
       Debug.Log("Generating enemies based on: " + seed[1]);
 
+      //seed[0] = 1;
+
       switch(seed[0]){
          case 0: //empty car
             for(int i = 0; i < xSize; i++){
@@ -137,12 +142,12 @@ public class Map : MonoBehaviour
                      car[i, j].tileName = "wall";
                   
                   //btwn walls and floors
-                  }else if((i == 0 && (j < (ySize/2)-2 || j > (ySize/2)+2))){
-                     car[i,j].tileName = "btwnwall_R";
-                  }else if(i == xSize-1 && (j < (ySize/2)-2 || j > (ySize/2)+2)){
-                     car[i,j].tileName = "btwnwall_L";
+                  //}else if((i == 0 && (j < (ySize/2)-2 || j > (ySize/2)+2))){
+                  //   car[i,j].tileName = "btwnwall_R";
+                  //}else if(i == xSize-1 && (j < (ySize/2)-2 || j > (ySize/2)+2)){
+                  //    car[i,j].tileName = "btwnwall_L";
                   }else if(i == 0){
-                     car[i,j].tileName = "btwnfloor_R";
+                      car[i,j].tileName = "btwnfloor_R";
                   }else if(i == xSize - 1){
                      car[i,j].tileName = "btwnfloor_L";
                   
@@ -159,9 +164,19 @@ public class Map : MonoBehaviour
             car[0,ySize - 1].tileName = "btwnend_R";
             car[xSize - 1,0].tileName = "btwnend_L";
             car[xSize - 1,ySize - 1].tileName = "btwnend_L";
+
+            //btwn car walls
+            car[0,1].tileName = "btwnwall_R_B";
+            car[0,2].tileName = "btwnwall_W_R_B";
+            car[0,ySize - 2].tileName = "btwnwall_R_T";
+            car[0,ySize - 3].tileName = "btwnwall_W_R_T";
+            car[xSize - 1,1].tileName = "btwnwall_L_B";
+            car[xSize - 1,2].tileName = "btwnwall_W_L_B";
+            car[xSize - 1,ySize - 2].tileName = "btwnwall_L_T";
+            car[xSize - 1,ySize - 3].tileName = "btwnwall_W_L_T";
             break;
          
-         case 1: //one box wall
+         case 1: //box walls
             for(int i = 0; i < xSize; i++){
                for(int j = 0; j < ySize; j++){
                   //create tile objects for car Tile array
@@ -195,9 +210,18 @@ public class Map : MonoBehaviour
             car[xSize - 1,0].tileName = "btwnend_L";
             car[xSize - 1,ySize - 1].tileName = "btwnend_L";
 
-            //box wall
+            //btwn car walls
+            car[0,1].tileName = "btwnwall_R_B";
+            car[0,2].tileName = "btwnwall_W_R_B";
+            car[0,ySize - 2].tileName = "btwnwall_R_T";
+            car[0,ySize - 3].tileName = "btwnwall_W_R_T";
+            car[xSize - 1,1].tileName = "btwnwall_L_B";
+            car[xSize - 1,2].tileName = "btwnwall_W_L_B";
+            car[xSize - 1,ySize - 2].tileName = "btwnwall_L_T";
+            car[xSize - 1,ySize - 3].tileName = "btwnwall_W_L_T";
+
+            //box walls
             for(int i = 1; i < ySize - 1; i++){
-               //aboid middle
                if(i < (ySize/2)-1 || i > (ySize/2)+1){
                   car[((xSize/2)-5 + (seed[2]*3)), i].tileName = "box";
                }
@@ -231,11 +255,21 @@ public class Map : MonoBehaviour
                   }
                }
             }
-            //btwn car ends
+            //btwn car 
             car[0,0].tileName = "btwnend_R";
             car[0,ySize - 1].tileName = "btwnend_R";
             car[xSize - 1,0].tileName = "btwnend_L";
             car[xSize - 1,ySize - 1].tileName = "btwnend_L";
+
+            //btwn car walls
+            car[0,1].tileName = "btwnwall_R_B";
+            car[0,2].tileName = "btwnwall_W_R_B";
+            car[0,ySize - 2].tileName = "btwnwall_R_T";
+            car[0,ySize - 3].tileName = "btwnwall_W_R_T";
+            car[xSize - 1,1].tileName = "btwnwall_L_B";
+            car[xSize - 1,2].tileName = "btwnwall_W_L_B";
+            car[xSize - 1,ySize - 2].tileName = "btwnwall_L_T";
+            car[xSize - 1,ySize - 3].tileName = "btwnwall_W_L_T";
 
             //randomly place boxes
             int r = Random.Range(5,12);
