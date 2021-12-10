@@ -55,8 +55,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7f42d5d87c8773c498dfa244e2de3a1f, type: 3}
   - {fileID: 21300000, guid: d0fdb07b05020f74a93b30b67be2f83f, type: 3}
   btwnWallSprites:
-  - {fileID: 21300000, guid: d8085e3a63194ef4eb03ba7a7e179cd6, type: 3}
-  - {fileID: 21300000, guid: 897d46b46ed5310449e1131414bf0d0a, type: 3}
+  - {fileID: 21300000, guid: 5fab7b2543ebe384eac3f4457a2ca298, type: 3}
+  - {fileID: 21300000, guid: dccdb784c08a57841bb40601022873c6, type: 3}
+  - {fileID: 21300000, guid: e89c566e79bf2ee4883f3af043af450c, type: 3}
+  - {fileID: 21300000, guid: 18bf82d3616aa634f9b3360108121724, type: 3}
+  - {fileID: 21300000, guid: 22867f370d09ba24d9b52d67117b346c, type: 3}
+  - {fileID: 21300000, guid: 840a06d89317fbe4b8171722cc7178ad, type: 3}
+  - {fileID: 21300000, guid: a62fad06564b13747995a2da23991289, type: 3}
+  - {fileID: 21300000, guid: 6c0420084c94ff0489ac169057340146, type: 3}
   btwnFloorSprites:
   - {fileID: 21300000, guid: 1c1ded96515675c45ab1fafd9abf546d, type: 3}
   - {fileID: 21300000, guid: 5259b6630dace47499d13bcc81fa1d6c, type: 3}
