@@ -47,6 +47,12 @@ public class Enemy_Follow : Enemy
             // Do nothing
         }
         else if (this.state == "MOVING") {
+            if (Mathf.Cos(this.movementDir) < 0) {
+                if (!GetComponent<SpriteRenderer>().flipX) GetComponent<SpriteRenderer>().flipX = true;
+            } else if (Mathf.Cos(this.movementDir) > 0) {
+                if (GetComponent<SpriteRenderer>().flipX) GetComponent<SpriteRenderer>().flipX = false;
+            }
+
             this.Move(new Vector2(Mathf.Cos(this.movementDir), Mathf.Sin(this.movementDir)));
         } 
         else if (this.state == "FOLLOWING") {
@@ -56,6 +62,11 @@ public class Enemy_Follow : Enemy
             if (GameObject.FindGameObjectWithTag("Player").transform.position.x < transform.position.x) {
                 xComp *= -1;
                 yComp *= -1;
+            }
+            if (xComp < 0) {
+                if (!GetComponent<SpriteRenderer>().flipX) GetComponent<SpriteRenderer>().flipX = true;
+            } else if (xComp > 0) {
+                if (GetComponent<SpriteRenderer>().flipX) GetComponent<SpriteRenderer>().flipX = false;
             }
             this.Move(new Vector2(xComp, yComp));
         }

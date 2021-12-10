@@ -7,6 +7,7 @@ public class Player : Entity
     public float maxHp = 100.0f;
     public float hp = 100.0f;
     public GameState gs;
+    
 
     // Update is called once per frame
     public override void Update()
@@ -17,6 +18,11 @@ public class Player : Entity
         Vector2 translation = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         // Move
+        if (translation.x < 0) {
+            if (!GetComponent<SpriteRenderer>().flipX) GetComponent<SpriteRenderer>().flipX = true;
+        } else if (translation.x > 0) {
+            if (GetComponent<SpriteRenderer>().flipX) GetComponent<SpriteRenderer>().flipX = false;
+        }
         Move(translation);
 
         // Check if no HP, if so game ends.
@@ -30,7 +36,7 @@ public class Player : Entity
     public void OnCollisionStay2D(Collision2D col) {
             print(col.gameObject.name);
         if (col.gameObject.name == "Enemy(Clone)") {
-            hp -= 0.2f;
+            hp -= 0.3f;
         }
     }
 

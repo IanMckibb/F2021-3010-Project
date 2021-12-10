@@ -117,7 +117,7 @@ public class Map : MonoBehaviour
       for(int i = 0; i < 3; i++){
          seed[i] = Random.Range(0,3);
       }
-      seed[1] = seed[1] + 2; //just adjusting enemy seed so it spawns more
+      seed[1] = seed[1] + 4; //just adjusting enemy seed so it spawns more
 
       //based on various pieces of seed generate:
          //- shape for car walls, eg if seperated into 2 rooms

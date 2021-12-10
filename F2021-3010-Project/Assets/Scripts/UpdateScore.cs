@@ -18,10 +18,10 @@ public class UpdateScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myText.text = "Score: " + gs.points.ToString();
-        myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 226, 80);
-        // GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + gs.points.ToString();
-        // myPanel.sizeDelta = new Vector2(GetComponent<TMPro.TextMeshProUGUI>().text.Length * 54 - 232, 80);
+        // myText.text = "Score: " + gs.points.ToString();
+        // myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 226, 80);
+        GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + gs.points.ToString();
+        myPanel.sizeDelta = new Vector2(GetComponent<TMPro.TextMeshProUGUI>().text.Length * 54 - 232, 80);
 
         //myText.text = "Score: " + gs.points.ToString();
         //myPanel.sizeDelta = new Vector2(myText.text.Length * 54 - 232, 80);
